@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "E:\\Repos\\Api .net\\University\\UniversityApiBackend\\UniversityApiBackend.csproj": {}
+    "E:\\Repos\\.NetApi\\UniversityApiBackend\\UniversityApiBackend.csproj": {}
   },
   "projects": {
-    "E:\\Repos\\Api .net\\University\\UniversityApiBackend\\UniversityApiBackend.csproj": {
+    "E:\\Repos\\.NetApi\\UniversityApiBackend\\UniversityApiBackend.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "E:\\Repos\\Api .net\\University\\UniversityApiBackend\\UniversityApiBackend.csproj",
+        "projectUniqueName": "E:\\Repos\\.NetApi\\UniversityApiBackend\\UniversityApiBackend.csproj",
         "projectName": "UniversityApiBackend",
-        "projectPath": "E:\\Repos\\Api .net\\University\\UniversityApiBackend\\UniversityApiBackend.csproj",
+        "projectPath": "E:\\Repos\\.NetApi\\UniversityApiBackend\\UniversityApiBackend.csproj",
         "packagesPath": "C:\\Users\\jonat\\.nuget\\packages\\",
-        "outputPath": "E:\\Repos\\Api .net\\University\\UniversityApiBackend\\obj\\",
+        "outputPath": "E:\\Repos\\.NetApi\\UniversityApiBackend\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\jonat\\AppData\\Roaming\\NuGet\\NuGet.Config",

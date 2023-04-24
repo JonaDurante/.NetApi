@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "mD8TrPP1heL7dI2ZNs8em0SvdClOuscu8BwFECzLlFh0Ylwj4TUrXRtd2oV2yrNMbHAiRFGumH/ct+sbpROuSg==",
+  "dgSpecHash": "CVlzIjKKt2y4J6fFYyt3+6H9C4Dqm9Xl/YGbva06UpWfk74suyZtZlFxqxz5YXGrkCzWHaeAsSZNftSO5r1Snw==",
   "success": true,
-  "projectFilePath": "E:\\Repos\\Api .net\\University\\UniversityApiBackend\\UniversityApiBackend.csproj",
+  "projectFilePath": "E:\\Repos\\.NetApi\\UniversityApiBackend\\UniversityApiBackend.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\jonat\\.nuget\\packages\\azure.core\\1.24.0\\azure.core.1.24.0.nupkg.sha512",
     "C:\\Users\\jonat\\.nuget\\packages\\azure.identity\\1.6.0\\azure.identity.1.6.0.nupkg.sha512",
