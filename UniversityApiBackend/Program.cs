@@ -1,7 +1,9 @@
 // 1. Using para trabajar con EF
 using Microsoft.EntityFrameworkCore;
 using UniversityApiBackend.DataAcces;
- 
+using UniversityApiBackend.Models.DataModels;
+using UniversityApiBackend.Services;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // 2. agregar conexion a base de datos
@@ -14,7 +16,12 @@ builder.Services.AddDbContext<UniversityDBContext>(options => options.UseSqlServ
 builder.Services.AddControllers();
 
 // 4. Add Custom Services (folder services)
-// builder.Services.AddScoped<IStuden, Student>();   --->cambiar
+builder.Services.AddScoped<IChapterServices, ChapterServices>();
+builder.Services.AddScoped<ICategoryServices, CategoryServices>();
+builder.Services.AddScoped<ICourseServices, CourseServices>();
+builder.Services.AddScoped<IStudentServices, StudentServices>();
+builder.Services.AddScoped<IUserService, UserService>();
+builder.Services.AddScoped<IServices, Services>();
 
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
