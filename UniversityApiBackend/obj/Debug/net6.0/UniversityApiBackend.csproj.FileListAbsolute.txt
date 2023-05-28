@@ -576,3 +576,4 @@ E:\Repos\.NetApi\UniversityApiBackend\obj\Debug\net6.0\refint\UniversityApiBacke
 E:\Repos\.NetApi\UniversityApiBackend\obj\Debug\net6.0\UniversityApiBackend.pdb
 E:\Repos\.NetApi\UniversityApiBackend\obj\Debug\net6.0\UniversityApiBackend.genruntimeconfig.cache
 E:\Repos\.NetApi\UniversityApiBackend\obj\Debug\net6.0\ref\UniversityApiBackend.dll
+E:\Repos\.NetApi\UniversityApiBackend\bin\Debug\net6.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll
