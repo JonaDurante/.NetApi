@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using NuGet.Protocol.Plugins;
 using UniversityApiBackend.DataAcces;
 using UniversityApiBackend.Models.DataModels;
 
@@ -22,7 +23,7 @@ namespace UniversityApiBackend.Services
 
         public List<User> GetUserWhitOutCourses()
         {
-            var Users = _context.Users.Where(x => !x..Any()).ToList();
+            var Users = _context.Users.Where(x => !x.IsDeleted == false).ToList();
             var Curses = _courseServices.GetCoursesWhitAnyStudent();
             return Users;
         }
