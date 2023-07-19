@@ -1,5 +1,8 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using System.Data;
 using UniversityApiBackend.DataAcces;
 using UniversityApiBackend.Models.DataModels;
 
@@ -48,6 +51,7 @@ namespace UniversityApiBackend.Controllers
         // PUT: api/Courses/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPut("{id}")]
+        [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme, Roles = "Administrator")]
         public async Task<IActionResult> PutCourse(int id, Course course)
         {
             if (id != course.Id)
@@ -79,6 +83,7 @@ namespace UniversityApiBackend.Controllers
         // POST: api/Courses
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPost]
+        [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme, Roles = "Administrator")]
         public async Task<ActionResult<Course>> PostCourse(Course course)
         {
           if (_context.Courses == null)
@@ -93,6 +98,7 @@ namespace UniversityApiBackend.Controllers
 
         // DELETE: api/Courses/5
         [HttpDelete("{id}")]
+        [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme, Roles = "Administrator")]
         public async Task<IActionResult> DeleteCourse(int id)
         {
             if (_context.Courses == null)
