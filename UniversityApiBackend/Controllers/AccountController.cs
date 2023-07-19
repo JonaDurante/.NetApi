@@ -2,6 +2,8 @@
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
+using UniversityApiBackend.DataAcces;
 using UniversityApiBackend.Helppers;
 using UniversityApiBackend.Models.DataModels;
 
@@ -12,12 +14,15 @@ namespace UniversityApiBackend.Controllers
     public class AccountController : ControllerBase
     {
         private readonly JwtSettings _jwtSettings;
+        private readonly UniversityDBContext _context;
 
-        public AccountController(JwtSettings jwtSettings)
+        public AccountController(JwtSettings jwtSettings, UniversityDBContext context)
         {
             _jwtSettings = jwtSettings;
-        }
+            _context = context;
 
+        }
+        //lista para pruebas // --> Volar.
         private IEnumerable<User> Logins = new List<User>()
         {
             new User () 
@@ -35,22 +40,27 @@ namespace UniversityApiBackend.Controllers
                 Password = "pepe"
             }
         };
+        //---
+
 
         [HttpPost]
         public IActionResult GetToken(UserLoggin userLoggin)
         {
             try
             {
+                //Agregar context de usuario.
                 var Token = new UserToken();
-                var Valid = Logins.Any(user => user.Name.Equals(userLoggin.UserName, StringComparison.OrdinalIgnoreCase));
-                if (Valid)
+                var searchedUser = _context.Users.Where(us =>
+                    us.Name.Equals(userLoggin.UserName, StringComparison.OrdinalIgnoreCase) &&
+                    us.Password.Equals(userLoggin.Password, StringComparison.OrdinalIgnoreCase)).FirstOrDefault();
+
+                if (searchedUser != null)
                 {
-                    var user = Logins.FirstOrDefault(user => user.Name.Equals(userLoggin.UserName, StringComparison.OrdinalIgnoreCase));
                     Token = JwtHelppers.GenerateTokenKey(new UserToken()
                     {
-                        UserName = user.Name,
-                        EmailId = user.Email,
-                        Id = user.Id,
+                        UserName = searchedUser.Name,
+                        EmailId = searchedUser.Email,
+                        Id = searchedUser.Id,
                         GuidId = Guid.NewGuid(),
                     }, _jwtSettings);
                 }

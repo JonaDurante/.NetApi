@@ -15,7 +15,7 @@ namespace UniversityApiBackend.Helppers
                 new Claim(ClaimTypes.Name, UserAcounts.UserName),
                 new Claim(ClaimTypes.Email, UserAcounts.EmailId),
                 new Claim(ClaimTypes.NameIdentifier, Id.ToString()),
-                new Claim(ClaimTypes.Expiration, DateTime.UtcNow.AddDays(1).ToString("MMM ddd dd yyyy HH:mm:ss tt"))
+                new Claim(ClaimTypes.Expiration, DateTime.Now.AddDays(1).ToString("MMM ddd dd yyyy HH:mm:ss tt"))
             };
 
             if (UserAcounts.UserName == "Admin")
@@ -24,8 +24,8 @@ namespace UniversityApiBackend.Helppers
             }
             else if (UserAcounts.UserName == "User 1")
             {
-                claims.Add(new Claim(ClaimTypes.Role, "User"));
-                claims.Add(new Claim("UserOnly", "User 1"));
+                claims.Add(new Claim(ClaimTypes.Role, "User")); // usuario básico
+                claims.Add(new Claim("UserOnly", "User 1")); 
             }
 
             return claims;
@@ -49,14 +49,11 @@ namespace UniversityApiBackend.Helppers
                 // Obtener Clave Secreta
                 var Key = System.Text.Encoding.ASCII.GetBytes(jwtSettings.IsUserSigninKey);
                 Guid Id;
-
                 // Expira en un día
-                DateTime expiredTime = DateTime.UtcNow.AddDays(1); 
-
+                DateTime expiredTime = DateTime.Now.AddDays(1); 
                 // Validez
                 UserToken.Validity = expiredTime.TimeOfDay;
-
-                // Genero JWT
+                // Genero JWT de
                 var jwtToken = new JwtSecurityToken(
                     issuer: jwtSettings.ValidIsUser,
                     audience: jwtSettings.ValidAudience,
