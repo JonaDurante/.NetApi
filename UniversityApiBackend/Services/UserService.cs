@@ -27,5 +27,10 @@ namespace UniversityApiBackend.Services
             var Curses = _courseServices.GetCoursesWhitAnyStudent();
             return Users;
         }
+
+        public List<User> GetAll()
+        {
+            return _context.Users.Where(x => x.IsDeleted == false).ToList();            
+        }
     }
 }

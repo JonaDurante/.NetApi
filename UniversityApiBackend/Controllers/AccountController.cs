@@ -22,26 +22,6 @@ namespace UniversityApiBackend.Controllers
             _context = context;
 
         }
-        //lista para pruebas // --> Volar.
-        private IEnumerable<User> Logins = new List<User>()
-        {
-            new User () 
-            { 
-                Id = 1,
-                Email= "jona@gmail.com",
-                Name = "Admin",
-                Password = "Admin"
-            },
-            new User ()
-            {
-                Id = 2,
-                Email= "pepe@gmail.com",
-                Name = "User",
-                Password = "pepe"
-            }
-        };
-        //---
-
 
         [HttpPost]
         public IActionResult GetToken(UserLoggin userLoggin)
@@ -50,9 +30,9 @@ namespace UniversityApiBackend.Controllers
             {
                 //Agregar context de usuario.
                 var Token = new UserToken();
-                var searchedUser = _context.Users.Where(us =>
-                    us.Name.Equals(userLoggin.UserName, StringComparison.OrdinalIgnoreCase) &&
-                    us.Password.Equals(userLoggin.Password, StringComparison.OrdinalIgnoreCase)).FirstOrDefault();
+                var searchedUser = _context.Users
+                    .Where(us =>us.Email == userLoggin.UserName && us.Password == userLoggin.Password)
+                    .FirstOrDefault();
 
                 if (searchedUser != null)
                 {
@@ -80,7 +60,7 @@ namespace UniversityApiBackend.Controllers
         [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme, Roles = "Administrator")]
         public IActionResult GetUsersList()
         { 
-            return Ok(Logins);
+            return Ok(_context.Users.Where(x => x.IsDeleted == false).ToList());
         }
 
     }
